@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import TransactionList from "./TransactionList"
+import React from 'react'
+import Account from "./Account";
 
 const App = () => {
-    //const [transactionsObj, setTransactions] = useState({transactions: [], totalBalance: 0})
 
     return (
         <div className="ui container">
-          <TransactionList />
+          <Account />
         </div>
     );
 }
