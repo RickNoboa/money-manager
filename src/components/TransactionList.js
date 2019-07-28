@@ -2,9 +2,13 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {generateKey} from "../helpers/generateKey";
 import AddTransaction from "./AddTransaction";
-import {addTransaction} from "../actions";
+import {addTransaction, fetchTransactions} from "../actions";
 
 class TransactionList extends Component {
+
+    componentDidMount() {
+        this.props.fetchTransactions()
+    }
 
     renderList = () => {
         if(this.props.transactions.length){
@@ -42,4 +46,4 @@ const mapStateToProps = state => {
     return { transactions: state.transactions }
 }
 
-export default connect(mapStateToProps, {addTransaction})(TransactionList)
+export default connect(mapStateToProps, {addTransaction, fetchTransactions})(TransactionList)
