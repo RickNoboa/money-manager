@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {generateKey} from "../helpers/generateKey";
+import AddTransaction from "./AddTransaction";
+import {addTransaction} from "../actions";
 
-const TransactionList = ({transactions}) => {
-    const renderList = () => {
-        if(transactions.length){
-            return transactions.map(transaction => {
+class TransactionList extends Component {
+
+    renderList = () => {
+        if(this.props.transactions.length){
+            return this.props.transactions.map(transaction => {
                 return (
                     <div className="item" key={transaction.id}>
                         <div className="content">
@@ -14,14 +19,27 @@ const TransactionList = ({transactions}) => {
             })
         }
         return <p>There are no transactions</p>
-
     }
 
-    return (
-        <div>
-            {renderList()}
-        </div>
-    )
+    handleSubmit = e => {
+        e.preventDefault()
+        const key = generateKey()
+        this.props.addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key)
+    }
+
+    render(){
+        return (
+            <div>
+                {this.renderList()}
+                <AddTransaction handleSubmit={this.handleSubmit} />
+            </div>
+        )
+    }
 }
 
-export default TransactionList
+const mapStateToProps = state => {
+    console.log(state)
+    return { transactions: state.transactions }
+}
+
+export default connect(mapStateToProps, {addTransaction})(TransactionList)
