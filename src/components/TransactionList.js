@@ -21,7 +21,7 @@ class TransactionList extends Component {
     handleAddSubmit = e => {
         e.preventDefault()
         const key = generateKey()
-        this.props.addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, e.target.transactionType.value)
+        this.props.addTransaction(e.target.transactionName.value, parseFloat(e.target.transactionAmount.value), key, e.target.transactionType.value)
     }
 
     handleDeleteSubmit = (id, amount, type) => {

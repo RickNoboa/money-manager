@@ -2,19 +2,19 @@
   {
     "id": 654656546,
     "name": "Comcast",
-    "amount": "79.77",
+    "amount": 79.77,
     "type": "withdrawal"
   },
   {
     "id": 6546546565,
     "name": "Payday",
-    "amount": "1770.26",
+    "amount": 1770.26,
     "type": "deposit"
   },
   {
     "id": 65465465465,
     "name": "Bank of America CC",
-    "amount": "55.66",
+    "amount": 55.66,
     "type": "withdrawal"
   }
 ]
