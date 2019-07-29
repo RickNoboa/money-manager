@@ -13,6 +13,12 @@ const AddTransaction = ({handleSubmit}) => {
                     <label>Amount:</label>
                     <input type="text" name="transactionAmount" />
                 </div>
+                <div>
+                    <label htmlFor="transactionTypeDeposit">Deposit</label>
+                    <input type="radio" name="transactionType" id="transactionTypeDeposit" value="deposit" defaultChecked />
+                    <label htmlFor="transactionTypeWithdrawal">Withdrawal</label>
+                    <input type="radio" name="transactionType" id="transactionTypeWithdrawal" value="withdrawal" />
+                </div>
                 <button>Add</button>
             </form>
 

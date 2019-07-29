@@ -1,0 +1,9 @@
+.item .transaction-amount {
+    font-weight:bold;
+}
+.item.deposit .transaction-amount {
+    color:#008000;
+}
+.item.withdrawal .transaction-amount {
+    color:#8b0000;
+}

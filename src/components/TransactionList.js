@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {generateKey} from "../helpers/generateKey";
 import AddTransaction from "./AddTransaction";
 import {addTransaction, fetchTransactions} from "../actions";
+import TransactionItem from "./TransactionIItem";
 
 class TransactionList extends Component {
 
@@ -12,15 +13,7 @@ class TransactionList extends Component {
 
     renderList = () => {
         if(this.props.transactions.length){
-            return this.props.transactions.map(transaction => {
-                return (
-                    <div className="item" key={transaction.id}>
-                        <div className="content">
-                            <p>{transaction.name} - ${parseFloat(transaction.amount).toFixed(2)}</p>
-                        </div>
-                    </div>
-                )
-            })
+            return this.props.transactions.map(transaction => <TransactionItem key={transaction.id} name={transaction.name} amount={transaction.amount} type={transaction.type} />)
         }
         return <p>There are no transactions</p>
     }
@@ -28,7 +21,7 @@ class TransactionList extends Component {
     handleSubmit = e => {
         e.preventDefault()
         const key = generateKey()
-        this.props.addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key)
+        this.props.addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, e.target.transactionType.value)
     }
 
     render(){
