@@ -1,10 +1,10 @@
 import React from 'react'
 
-const AddTransaction = ({handleSubmit}) => {
+const AddTransaction = ({handleAddSubmit}) => {
     return (
         <div>
             <h2>Add Transaction</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleAddSubmit}>
                 <div>
                     <label>Name:</label>
                     <input type="text" name="transactionName" />

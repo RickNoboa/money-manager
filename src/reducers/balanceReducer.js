@@ -6,6 +6,8 @@ export default (balance = '0', action) => {
             } else {
                 return parseFloat(balance) - parseFloat(action.payload.amount)
             }
+        case 'DELETE_TRANSACTION':
+            return parseFloat(balance) - parseFloat(action.payload.amount)
         default:
             return balance
     }

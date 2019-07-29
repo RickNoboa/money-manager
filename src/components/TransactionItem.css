@@ -1,9 +1,18 @@
-.item .transaction-amount {
+.item {
+    margin:10px 0;
+}
+.item .content {
+    display:flex;
+}
+.item .content .transaction-amount {
     font-weight:bold;
 }
-.item.deposit .transaction-amount {
+.item.deposit .content .transaction-amount {
     color:#008000;
 }
-.item.withdrawal .transaction-amount {
+.item.withdrawal .content .transaction-amount {
     color:#8b0000;
+}
+.item .content .delete {
+    margin-left:20px;
 }

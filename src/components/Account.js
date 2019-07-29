@@ -7,7 +7,7 @@ const Account = ({balance}) => {
     return (
         <div>
             <TransactionList />
-            <p>Current balance: ${balance}</p>
+            <p>Current balance: ${parseFloat(balance).toFixed(2)}</p>
         </div>
     )
 }
