@@ -1,16 +1,20 @@
-export default (balance = 0, action) => {
+export default (balance = "0", action) => {
     switch (action.type){
         case 'ADD_TRANSACTION':
             if(action.payload.type === 'deposit'){
-                return balance + action.payload.amount
+                let newBalance = parseFloat(balance) + parseFloat(action.payload.amount)
+                return parseFloat(newBalance).toFixed(2)
             } else {
-                return balance - action.payload.amount
+                let newBalance = parseFloat(balance) - parseFloat(action.payload.amount)
+                return parseFloat(newBalance).toFixed(2)
             }
         case 'DELETE_TRANSACTION':
-            if(action.payload.type === 'deposit')
-                return balance - action.payload.amount
-            else {
-                return balance + action.payload.amount
+            if(action.payload.type === 'deposit') {
+                let newBalance = parseFloat(balance) - parseFloat(action.payload.amount)
+                return parseFloat(newBalance).toFixed(2)
+            } else {
+                let newBalance = parseFloat(balance) + parseFloat(action.payload.amount)
+                return parseFloat(newBalance).toFixed(2)
             }
         default:
             return balance
