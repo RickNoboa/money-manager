@@ -14,12 +14,13 @@ export const addTransaction = (name, amount, id, type) => {
         }
     }
 }
-export const deleteTransaction = (id, amount) => {
+export const deleteTransaction = (id, amount, type) => {
     return {
         type: 'DELETE_TRANSACTION',
         payload: {
             id: id,
-            amount: amount
+            amount: amount,
+            type: type
         }
     }
 }

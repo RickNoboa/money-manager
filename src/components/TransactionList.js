@@ -24,8 +24,8 @@ class TransactionList extends Component {
         this.props.addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, e.target.transactionType.value)
     }
 
-    handleDeleteSubmit = (id, amount) => {
-        this.props.deleteTransaction(id, amount)
+    handleDeleteSubmit = (id, amount, type) => {
+        this.props.deleteTransaction(id, amount, type)
     }
 
     render(){

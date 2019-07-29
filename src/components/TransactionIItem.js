@@ -6,7 +6,7 @@ const TransactionItem = ({name, amount, type, id, handleDeleteSubmit}) => {
         <div className={type === 'deposit' ? 'item deposit' : 'item withdrawal'}>
             <div className="content">
                 <p>{name} - <span className="transaction-amount">${parseFloat(amount).toFixed(2)}</span></p>
-                <a className="delete" href="#" onClick={() => handleDeleteSubmit(id, amount)}>Delete</a>
+                <a className="delete" href="#" onClick={() => handleDeleteSubmit(id, amount, type)}>Delete</a>
             </div>
         </div>
     )
