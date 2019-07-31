@@ -1,5 +1,6 @@
 import React from 'react'
 import Account from "./Account";
+import 'normalize.css'
 
 const App = () => {
 
