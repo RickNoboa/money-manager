@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import Account from "./Account";
 import styled, {createGlobalStyle} from 'styled-components'
+import Nav from './Nav'
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -24,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
     }
 `
 const Wrapper = styled.div`
+    display:flex;
     width:100%;
     max-width:1280px;
     height:300px;
@@ -38,6 +40,7 @@ const App = () => {
     return (
         <Fragment>
             <Wrapper>
+                <Nav />
                 {/*<Account/>*/}
             </Wrapper>
             <GlobalStyle />
