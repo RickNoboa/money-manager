@@ -1,14 +1,27 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {generateKey} from "../helpers/generateKey";
-import AddTransaction from "./AddTransaction";
-import {fetchTransactions, addTransaction, deleteTransaction} from "../actions";
+import {fetchTransactions, deleteTransaction} from "../actions";
 import TransactionItem from "./TransactionIItem";
+import styled from 'styled-components'
+
+const ListWrapper = styled.div`
+    width:100%
+    margin-top:20px;
+    font-size:15px;
+    display:flex;
+    flex-direction:column;
+    border-radius:10px;
+    overflow:hidden;
+`
 
 class TransactionList extends Component {
 
     componentDidMount() {
         this.props.fetchTransactions()
+    }
+
+    handleDeleteSubmit = (id, amount, type) => {
+        this.props.deleteTransaction(id, amount, type)
     }
 
     renderList = () => {
@@ -18,22 +31,11 @@ class TransactionList extends Component {
         return <p>There are no transactions</p>
     }
 
-    handleAddSubmit = e => {
-        e.preventDefault()
-        const key = generateKey()
-        this.props.addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, e.target.transactionType.value)
-    }
-
-    handleDeleteSubmit = (id, amount, type) => {
-        this.props.deleteTransaction(id, amount, type)
-    }
-
     render(){
         return (
-            <div>
+            <ListWrapper>
                 {this.renderList()}
-                <AddTransaction handleAddSubmit={this.handleAddSubmit} />
-            </div>
+            </ListWrapper>
         )
     }
 }
@@ -43,4 +45,4 @@ const mapStateToProps = state => {
     return { transactions: state.transactions }
 }
 
-export default connect(mapStateToProps, {fetchTransactions, addTransaction, deleteTransaction})(TransactionList)
+export default connect(mapStateToProps, {fetchTransactions, deleteTransaction})(TransactionList)

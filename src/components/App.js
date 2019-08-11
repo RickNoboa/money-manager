@@ -26,9 +26,10 @@ const GlobalStyle = createGlobalStyle`
 `
 const Wrapper = styled.div`
     display:flex;
+    flex-direction:column;  
     width:100%;
     max-width:1280px;
-    height:300px;
+    padding:10px 0;
     background:#33333d;
     border-radius:5px;
     -webkit-box-shadow: 0px 4px 3px 0px rgba(0,0,0,0.37); 
@@ -41,7 +42,7 @@ const App = () => {
         <Fragment>
             <Wrapper>
                 <Nav />
-                {/*<Account/>*/}
+                <Account/>
             </Wrapper>
             <GlobalStyle />
         </Fragment>
