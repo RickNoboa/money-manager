@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchTransactions, deleteTransaction} from "../actions";
+import {fetchTransactions} from "../actions";
 import TransactionItem from "./TransactionIItem";
 import styled from 'styled-components'
+import Scrollbar from 'react-scrollbars-custom'
 
 const ListWrapper = styled.div`
     width:100%
+    height:222px;
+    overflow:hidden;
     margin-top:20px;
-    font-size:15px;
-    display:flex;
-    flex-direction:column;
-    border-radius:10px;
+    border-radius:5px;
     overflow:hidden;
 `
 
@@ -20,13 +20,9 @@ class TransactionList extends Component {
         this.props.fetchTransactions()
     }
 
-    handleDeleteSubmit = (id, amount, type) => {
-        this.props.deleteTransaction(id, amount, type)
-    }
-
     renderList = () => {
         if(this.props.transactions.length){
-            return this.props.transactions.map(transaction => <TransactionItem key={transaction.id} id={transaction.id} name={transaction.name} amount={transaction.amount} type={transaction.type} handleDeleteSubmit={this.handleDeleteSubmit} />)
+            return this.props.transactions.map(transaction => <TransactionItem key={transaction.id} id={transaction.id} name={transaction.name} amount={transaction.amount} type={transaction.type} handleDeleteSubmit={this.props.handleDeleteSubmit} />)
         }
         return <p>There are no transactions</p>
     }
@@ -34,15 +30,16 @@ class TransactionList extends Component {
     render(){
         return (
             <ListWrapper>
-                {this.renderList()}
+                <Scrollbar>
+                    {this.renderList()}
+                </Scrollbar>
             </ListWrapper>
         )
     }
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return { transactions: state.transactions }
 }
 
-export default connect(mapStateToProps, {fetchTransactions, deleteTransaction})(TransactionList)
+export default connect(mapStateToProps, {fetchTransactions})(TransactionList)

@@ -21,7 +21,7 @@ const AccountBalanceDisplay = styled.div`
     padding:0 3%;
     background:rgba(255, 255, 255, 0.03);
     font-size:15px;
-    border-radius:10px;
+    border-radius:5px;
 `
 const BalanceFigure = styled.span`
     &.positive {
@@ -32,12 +32,16 @@ const BalanceFigure = styled.span`
     }
 `
 
-const Account = ({balance}) => {
+const Account = ({balance, addTransaction, deleteTransaction}) => {
 
     const handleAddSubmit = e => {
         e.preventDefault()
         const key = generateKey()
-        this.props.addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, e.target.transactionType.value)
+        addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, e.target.transactionType.value)
+    }
+
+    const handleDeleteSubmit = (id, amount, type) => {
+        deleteTransaction(id, amount, type)
     }
 
     return (
@@ -46,12 +50,14 @@ const Account = ({balance}) => {
                 <span>Balance:</span>
                 <BalanceFigure className={parseInt(balance) >= 0 ? 'positive' : 'negative'}>{parseInt(balance) < 0 ? '-' : ''}${balance.replace('-', '')}</BalanceFigure>
             </AccountBalanceDisplay>
-            <TransactionList />
+            <TransactionList handleDeleteSubmit={handleDeleteSubmit} />
+            <AddTransaction handleAddSubmit={handleAddSubmit} />
         </AccountWrapper>
     )
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         balance: state.balance
     }
