@@ -34,10 +34,17 @@ const BalanceFigure = styled.span`
 
 const Account = ({balance, addTransaction, deleteTransaction}) => {
 
+    const resetAddTransactionForm = () => {
+        document.getElementById("addTransaction").reset()
+    }
+
     const handleAddSubmit = e => {
         e.preventDefault()
-        const key = generateKey()
-        addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, e.target.transactionType.value)
+        let transactionType
+        let key = generateKey()
+        if(e.target.transactionType.checked){transactionType = 'deposit'} else {transactionType = 'withdrawal'}
+        addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, transactionType)
+        resetAddTransactionForm()
     }
 
     const handleDeleteSubmit = (id, amount, type) => {

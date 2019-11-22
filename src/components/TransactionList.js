@@ -8,10 +8,16 @@ import Scrollbar from 'react-scrollbars-custom'
 const ListWrapper = styled.div`
     width:100%
     height:222px;
+    min-height:222px;
     overflow:hidden;
     margin-top:20px;
     border-radius:5px;
     overflow:hidden;
+`
+const NoTransactions = styled.p`
+    text-align:center;
+    font-size:14px;
+    padding-top:20px;
 `
 
 class TransactionList extends Component {
@@ -24,7 +30,7 @@ class TransactionList extends Component {
         if(this.props.transactions.length){
             return this.props.transactions.map(transaction => <TransactionItem key={transaction.id} id={transaction.id} name={transaction.name} amount={transaction.amount} type={transaction.type} handleDeleteSubmit={this.props.handleDeleteSubmit} />)
         }
-        return <p>There are no transactions</p>
+        return <NoTransactions>There are no transactions</NoTransactions>
     }
 
     render(){
