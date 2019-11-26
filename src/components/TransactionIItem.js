@@ -44,7 +44,7 @@ const TransactionItem = ({name, amount, type, id, handleDeleteSubmit}) => {
                 <span>{name}</span>
             </ItemRowLeft>
             <ItemRowRight>
-                <span className={type == 'deposit' ? 'amount deposit' : 'amount withdrawal'}>{type == 'deposit' ? '+' : '-'}${amount}</span>
+                <span className={type === 'deposit' ? 'amount deposit' : 'amount withdrawal'}>{type === 'deposit' ? '+' : '-'}${amount}</span>
                 <span className="deleteTrans" onClick={() => handleDeleteSubmit(id, amount, type)}>Delete</span>
             </ItemRowRight>
         </ItemWrapper>
