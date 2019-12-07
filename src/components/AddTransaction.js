@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {Component} from 'react'
 import styled from 'styled-components'
+import './styles.css'
 import depositIcon from '../images/icon_deposit.png'
-import withdrawalIcon from '../images/icon_withdrawalt.png'
+import withdrawalIcon from '../images/icon_withdrawal.png'
+import datepickerIcon from '../images/icon_datepicker.png'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 const FormWrapper = styled.div`
     width:94%;
@@ -20,13 +24,7 @@ const Input = styled.input`
     margin-bottom:5px;
     border-radius:5px;
 `
-const DateTypeWrap = styled.div`
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-`
 const TypeSwitch = styled.div`
-    width:100%;
     max-width:125px;
     text-align:center;
     margin-top:10px;
@@ -86,23 +84,47 @@ const TypeSwitch = styled.div`
         left:90px;
     }
 `
+const StyledDatePicker = styled(DatePicker)`
+    width:96%;
+    border:0;
+    color:#fff;
+    background:#222 url(${datepickerIcon}) 98% 3px/20px auto no-repeat;
+    font-size:15px;
+    padding:5px 2%;
+    border-radius:5px;
+    position:relative;
+    cursor:pointer;
+`
 
-const AddTransaction = ({handleAddSubmit}) => {
-    return (
-        <FormWrapper>
-            <form id="addTransaction" onSubmit={handleAddSubmit}>
-                <Input type="text" name="transactionName" placeholder="Name" />
-                <Input type="text" name="transactionAmount" placeholder="Amount" />
-                <DateTypeWrap>
+class AddTransaction extends Component {
+    state = {
+        startDate: new Date()
+    }
+
+    handleChange = date => {
+        this.setState({
+            startDate: date
+        })
+    }
+
+    render() {
+        return (
+            <FormWrapper>
+                <form id="addTransaction" onSubmit={this.props.handleAddSubmit}>
+                    <Input type="text" name="transactionName" placeholder="Name" />
+                    <Input type="text" name="transactionAmount" placeholder="Amount" />
+                    <StyledDatePicker selected={this.state.startDate} onChange={this.handleChange} />
                     <TypeSwitch>
                         <input type="checkbox" id="transactionType" name="transactionType" />
                         <label htmlFor="transactionType">&nbsp;</label>
                     </TypeSwitch>
-                </DateTypeWrap>
-                <button>Add</button>
-            </form>
-        </FormWrapper>
-    )
+                    <button>Add</button>
+                </form>
+            </FormWrapper>
+        )
+
+    }
+
 }
 
 export default AddTransaction
