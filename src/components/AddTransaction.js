@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
+import DatePicker from 'react-datepicker'
+import MaskedInput from 'react-text-mask'
+import createNumberMask from 'text-mask-addons/dist/createNumberMask'
+
 import './styles.css'
+import 'react-datepicker/dist/react-datepicker.css'
+
 import depositIcon from '../images/icon_deposit.png'
 import withdrawalIcon from '../images/icon_withdrawal.png'
 import datepickerIcon from '../images/icon_datepicker.png'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 
 const FormWrapper = styled.div`
     width:94%;
@@ -95,6 +99,16 @@ const StyledDatePicker = styled(DatePicker)`
     position:relative;
     cursor:pointer;
 `
+const StyledMaskedInput = styled(MaskedInput)`
+    width:96%;
+    border:0;
+    color:#fff;
+    background:#222;
+    font-size:15px;
+    padding:5px 2%;
+    margin-bottom:5px;
+    border-radius:5px;
+`
 
 class AddTransaction extends Component {
     state = {
@@ -108,11 +122,27 @@ class AddTransaction extends Component {
     }
 
     render() {
+
+        const defaultMaskOptions = {
+            prefix: '$',
+            suffix: '',
+            includeThousandsSeparator: true,
+            thousandsSeparatorSymbol: ',',
+            allowDecimal: true,
+            decimalSymbol: '.',
+            decimalLimit: 2, // how many digits allowed after the decimal
+            integerLimit: 7, // limit length of integer numbers
+            allowNegative: false,
+            allowLeadingZeroes: false
+        }
+
+        const currencyMask = createNumberMask(defaultMaskOptions)
+
         return (
             <FormWrapper>
                 <form id="addTransaction" onSubmit={this.props.handleAddSubmit}>
                     <Input type="text" name="transactionName" placeholder="Name" />
-                    <Input type="text" name="transactionAmount" placeholder="Amount" />
+                    <StyledMaskedInput name="transactionAmount" mask={currencyMask} placeholder="Amount" />
                     <StyledDatePicker selected={this.state.startDate} onChange={this.handleChange} />
                     <TypeSwitch>
                         <input type="checkbox" id="transactionType" name="transactionType" />

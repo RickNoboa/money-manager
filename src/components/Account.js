@@ -40,10 +40,13 @@ const Account = ({balance, addTransaction, deleteTransaction}) => {
 
     const handleAddSubmit = e => {
         e.preventDefault()
-        let transactionType
+
         let key = generateKey()
+        let transactionAmount = e.target.transactionAmount.value.replace('$', '')
+        let transactionType
         if(e.target.transactionType.checked){transactionType = 'deposit'} else {transactionType = 'withdrawal'}
-        addTransaction(e.target.transactionName.value, e.target.transactionAmount.value, key, transactionType)
+
+        addTransaction(e.target.transactionName.value, transactionAmount, key, transactionType)
         resetAddTransactionForm()
     }
 
