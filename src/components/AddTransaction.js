@@ -143,7 +143,7 @@ class AddTransaction extends Component {
                 <form id="addTransaction" onSubmit={this.props.handleAddSubmit}>
                     <Input type="text" name="transactionName" placeholder="Name" />
                     <StyledMaskedInput name="transactionAmount" mask={currencyMask} placeholder="Amount" />
-                    <StyledDatePicker selected={this.state.startDate} onChange={this.handleChange} />
+                    <StyledDatePicker name="transactionDate" selected={this.state.startDate} onChange={this.handleChange} />
                     <TypeSwitch>
                         <input type="checkbox" id="transactionType" name="transactionType" />
                         <label htmlFor="transactionType">&nbsp;</label>

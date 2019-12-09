@@ -1,54 +1,63 @@
 [
   {
     "id": 654656546,
+    "date": "09/13/2019",
     "name": "Comcast",
     "amount": "79.77",
     "type": "withdrawal"
   },
   {
     "id": 646549865,
+    "date": "08/30/2019",
     "name": "Payday",
     "amount": "1770.26",
     "type": "withdrawal"
   },
   {
     "id": 5496466654,
+    "date": "08/22/2019",
     "name": "Payday",
     "amount": "1770.26",
     "type": "deposit"
   },
   {
     "id": 984656548,
+    "date": "07/14/2019",
     "name": "Payday",
     "amount": "1770.26",
     "type": "withdrawal"
   },
   {
     "id": 8432195266,
+    "date": "07/14/2019",
     "name": "Payday",
     "amount": "1770.26",
     "type": "deposit"
   },
   {
     "id": 6498654984,
+    "date": "05/14/2019",
     "name": "Payday",
     "amount": "1770.26",
     "type": "deposit"
   },
   {
     "id": 19846498489,
+    "date": "05/01/2019",
     "name": "Payday",
     "amount": "1770.26",
     "type": "withdrawal"
   },
   {
     "id": 9465946546,
+    "date": "03/23/2019",
     "name": "Payday",
     "amount": "1770.26",
     "type": "deposit"
   },
   {
     "id": 65465465465,
+    "date": "03/14/2019",
     "name": "Bank of America CC",
     "amount": "55.66",
     "type": "withdrawal"

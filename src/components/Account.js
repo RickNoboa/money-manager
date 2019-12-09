@@ -46,7 +46,7 @@ const Account = ({balance, addTransaction, deleteTransaction}) => {
         let transactionType
         if(e.target.transactionType.checked){transactionType = 'deposit'} else {transactionType = 'withdrawal'}
 
-        addTransaction(e.target.transactionName.value, transactionAmount, key, transactionType)
+        addTransaction(e.target.transactionName.value, e.target.transactionDate.value, transactionAmount, key, transactionType)
         resetAddTransactionForm()
     }
 
