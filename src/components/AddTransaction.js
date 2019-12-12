@@ -80,11 +80,11 @@ const TypeSwitch = styled.div`
         top:-7px;
     }
     &:before {
-        background:url(${withdrawalIcon}) 0 0/25px auto no-repeat;
+        background:url(${depositIcon}) 0 0/25px auto no-repeat;
         left:10px;
     }
     &:after {
-        background:url(${depositIcon}) 0 0/25px auto no-repeat;
+        background:url(${withdrawalIcon}) 0 0/25px auto no-repeat;
         left:90px;
     }
 `
@@ -140,9 +140,9 @@ class AddTransaction extends Component {
 
         return (
             <FormWrapper>
-                <form id="addTransaction" onSubmit={this.props.handleAddSubmit} noValidate>
-                    <Input type="text" name="transactionName" placeholder="Name" required />
-                    <StyledMaskedInput name="transactionAmount" mask={currencyMask} placeholder="Amount" required />
+                <form id="addTransaction" onSubmit={this.props.handleAddSubmit}>
+                    <Input type="text" name="transactionName" placeholder="Payee / Item" />
+                    <StyledMaskedInput name="transactionAmount" mask={currencyMask} placeholder="$0.00" />
                     <StyledDatePicker name="transactionDate" selected={this.state.startDate} onChange={this.handleChange} />
                     <TypeSwitch>
                         <input type="checkbox" id="transactionType" name="transactionType" />

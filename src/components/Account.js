@@ -42,13 +42,17 @@ const Account = ({balance, addTransaction, deleteTransaction}) => {
         e.preventDefault()
 
         let key = generateKey()
-        let transactionAmount = e.target.transactionAmount.value.replace(/[$,]/g, '')
-        let transactionType
-        let tempDate = new Date(e.target.transactionDate.value)
-        let transactionDate = tempDate.toJSON()
-        if(e.target.transactionType.checked){transactionType = 'deposit'} else {transactionType = 'withdrawal'}
+        let transactionName, transactionType, transactionAmount, tempDate, transactionDate
 
-        addTransaction(e.target.transactionName.value, transactionDate, transactionAmount, key, transactionType)
+        if(e.target.transactionName.value == ''){transactionName = 'Other'} else {transactionName = e.target.transactionName.value}
+        if(e.target.transactionType.checked){transactionType = 'withdrawal'} else {transactionType = 'deposit'}
+        if(e.target.transactionAmount.value == ''){transactionAmount = '0'} else {transactionAmount = e.target.transactionAmount.value.replace(/[$,]/g, '')}
+
+        tempDate = new Date(e.target.transactionDate.value)
+        transactionDate = tempDate.toJSON()
+
+        addTransaction(transactionName, transactionDate, transactionAmount, key, transactionType)
+
         resetAddTransactionForm()
     }
 
