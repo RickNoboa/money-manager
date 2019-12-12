@@ -42,7 +42,7 @@ const Account = ({balance, addTransaction, deleteTransaction}) => {
         e.preventDefault()
 
         let key = generateKey()
-        let transactionAmount = e.target.transactionAmount.value.replace('$', '')
+        let transactionAmount = e.target.transactionAmount.value.replace(/[$,]/g, '')
         let transactionType
         let tempDate = new Date(e.target.transactionDate.value)
         let transactionDate = tempDate.toJSON()
