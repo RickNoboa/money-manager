@@ -44,9 +44,11 @@ const Account = ({balance, addTransaction, deleteTransaction}) => {
         let key = generateKey()
         let transactionAmount = e.target.transactionAmount.value.replace('$', '')
         let transactionType
+        let tempDate = new Date(e.target.transactionDate.value)
+        let transactionDate = tempDate.toJSON()
         if(e.target.transactionType.checked){transactionType = 'deposit'} else {transactionType = 'withdrawal'}
 
-        addTransaction(e.target.transactionName.value, e.target.transactionDate.value, transactionAmount, key, transactionType)
+        addTransaction(e.target.transactionName.value, transactionDate, transactionAmount, key, transactionType)
         resetAddTransactionForm()
     }
 
@@ -67,7 +69,7 @@ const Account = ({balance, addTransaction, deleteTransaction}) => {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    //console.log(state)
     return {
         balance: state.balance
     }

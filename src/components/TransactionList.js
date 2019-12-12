@@ -27,6 +27,7 @@ class TransactionList extends Component {
     }
 
     renderList = () => {
+        console.log(this.props.transactions)
         if(this.props.transactions.length){
             return this.props.transactions.map(transaction => <TransactionItem key={transaction.id} id={transaction.id} name={transaction.name} amount={transaction.amount} type={transaction.type} handleDeleteSubmit={this.props.handleDeleteSubmit} />)
         }
